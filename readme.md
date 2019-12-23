@@ -10,25 +10,25 @@ Simple docker container for a postfix relay only server. The idea is to use it a
 
 - Logging to stdout
 
-## Example
-1. Build image
-```shell
-docker build -t mx2 .
-```
+## Examples
+
 
 * Minimal (No letsencrypt, docker provided hostname)
 ```shell
-docker run -e RELAY_DOMAINS=example.com -e RELAY_HOST=mx1.example.com -p 25:25 mx2
+docker pull laubair/mx2-simple
+docker run -e RELAY_DOMAINS=example.com -e RELAY_HOST=mx1.example.com -p 25:25 laubair/mx2-simple
 ```
 
 * With letsencrypt
 ```shell
-docker run -e RELAY_DOMAINS=example.com -e RELAY_HOST=mx1.example.com --hostname=mx2.example.com -p 25:25 -p 80:80 mx2
+docker pull laubair/mx2-simple
+docker run -e RELAY_DOMAINS=example.com -e RELAY_HOST=mx1.example.com --hostname=mx2.example.com -p 25:25 -p 80:80 laubair/mx2-simple
 ```
 Exposing of port 80 needed for letsencrypt domain verification
 
 * Specifiy a relay_recipients list
-
 ```shell
-docker run -e RELAY_DOMAINS=example.com -e RELAY_HOST=mx1.example.com --hostname=mx2.example.com -v /home/user/mx2-simple/relay_recipients:/etc/postfix/relay_recipients -p 25:25 -p 80:80 mx2
+docker pull laubair/mx2-simple
+docker run -e RELAY_DOMAINS=example.com -e RELAY_HOST=mx1.example.com --hostname=mx2.example.com -v /home/user/mx2-simple/relay_recipients:/etc/postfix/relay_recipients -p 25:25 -p 80:80 laubair/mx2-simple
 ```
+See postifx [doc](http://www.postfix.org/STANDARD_CONFIGURATION_README.html#backup) for format of relay_recipients list.
