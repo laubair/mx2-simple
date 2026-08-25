@@ -1,4 +1,4 @@
-# mx2-simple
+# Deprecated and no longer maintained! - mx2-simple
 Simple docker container for a postfix relay only server. The idea is to use it as backup mx for your domain. It simply sends emails to relay host as soon the main mx is available. This is handy in case of migrations or maintance of the main mail server(s)
 
 ## Features
